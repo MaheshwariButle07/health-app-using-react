@@ -8,6 +8,11 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+
+import { postSignUp } from "./controllers/user.js"
+
+
+
 const connectDB = async () => {
   const conn = await mongoose.connect(process.env.MONGODB_URL)
 
@@ -19,9 +24,12 @@ connectDB();
 
 app.get("/", (req, res) => {
   res.json({
-      message: "Welcome to Flexfit API"
+    message: "Welcome to Flexfit API"
   })
-})
+});
+
+app.post('/signup', postSignUp);
+
 
 
 const PORT = process.env.PORT || 8000;
