@@ -22,9 +22,13 @@ body {
     box-shadow: 0 0 1px 1px ;
 }
 
+.auth-form-heading{
+    margin-left: 11px;
+}
+
 .user-input {
     display: block;
-    margin: 15px auto;
+    margin: 10px auto;
     width: 90%;
     padding: 4px 6px;
    
@@ -53,3 +57,7 @@ body {
     box-shadow: 1px 1px 1px 1px black;
     width: 85px;
 }
+
+/* .auth-link{
+    text-align: center;
+} */

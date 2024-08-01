@@ -17,6 +17,10 @@ const router = createBrowserRouter([
   path: '/signup',
   element: <SignUp />
 },
+// {
+//   path: '/login',
+//   element: <Login />
+// },
 {
   path: '*',
   element: '404 Not Found'
