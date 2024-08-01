@@ -47,7 +47,7 @@ function SignUp() {
             <h1 className='auth-heading'>Before you start please register first 🡆</h1>
 
             <form className='auth-form'>
-                <label for="fullName" className='auth-form-heading'>Enter Username:</label>
+                <label htmlFor="fullName" className='auth-form-heading'>Enter Username:</label>
                 <input
                     type='text'
                     id="fullName"
@@ -59,19 +59,23 @@ function SignUp() {
                     }}
                 />
 
-                <label for='gender' className='auth-form-heading'>Enter gender:</label>
-                <input
+                <label htmlFor='gender' className='auth-form-heading'>Enter gender:</label>
+                <select
                     type='text'
                     id="gender"
                     placeholder='gender'
-                    className='user-input'
+                    className='user-input  user-gender-input'
+
                     value={user.gender}
                     onChange={(e) => {
                         setUser({ ...user, gender: e.target.value })
                     }}
-                />
+                >
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
 
-                <label for="age" className='auth-form-heading'>Enter age:</label>
+                <label htmlFor="age" className='auth-form-heading'>Enter age:</label>
                 <input
                     type='number'
                     id="age"
@@ -83,7 +87,7 @@ function SignUp() {
                     }}
                 />
 
-                <label for="email" className='auth-form-heading'>Enter email:</label>
+                <label htmlFor="email" className='auth-form-heading'>Enter email:</label>
                 <input
                     type='email'
                     id="email"
@@ -95,7 +99,7 @@ function SignUp() {
                     }}
                 />
 
-                <label for="password" className='auth-form-heading'>Enter password:</label>
+                <label htmlFor="password" className='auth-form-heading'>Enter password:</label>
                 <input
                     type='password'
                     id="password"
@@ -107,10 +111,11 @@ function SignUp() {
                     }}
                 />
 
-                <label for="profile" className='auth-form-heading'>Upload a profile:</label>
+                <label htmlFor="profile" className='auth-form-heading'>Upload a profile:</label>
                 <input
                     type='file'
                     id="profile"
+                    accept="image/*"
                     placeholder='Profile'
                     className='user-input'
                     value={user.profilePhoto}
