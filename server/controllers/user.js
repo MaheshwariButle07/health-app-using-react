@@ -36,4 +36,33 @@ const postSignUp = async (req, res) => {
       }
   }
 
-  export {postSignUp}
+  const login = async(req,res)=>{
+
+    const { Email , Password } = req.body
+
+    const user = await User.findOne({
+      Email:Email,
+      Password:Password
+    })
+
+
+
+   if(user){
+    res.json({
+      success:true,
+      message:"You Loggedin Successfully",
+      data:user
+    })
+   }
+
+   else{
+    res.json({
+      success:false,
+      message:"user not found",
+      data:null
+    })
+   }
+
+  }
+
+  export {postSignUp , login}

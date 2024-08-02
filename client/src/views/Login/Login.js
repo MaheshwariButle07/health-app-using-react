@@ -1,8 +1,36 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios"
 
 function Login() {
+
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
+
+  const login = async()=>{
+
+    const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`)
+    
+    if(response.data.success){
+      toast.success(response.data.message)
+
+      localStorage.getItem('currentUser',JSON.stringify(response.data.data))
+
+      toast.loading("Redirecting to home page")
+
+      setTimeout(()=>{
+        window.location.href = "/"
+      },3000)
+    }
+
+    else{
+      toast.error(response.data.message)
+    }
+
+  }
+
+
   return (
     <div>
       <h1 className="auth-heading">Before you start please Login first 🡆</h1>
@@ -16,10 +44,10 @@ function Login() {
           id="email"
           placeholder="email"
           className="user-input"
-          // value={user.email}
-          // onChange={(e) => {
-          //     setUser({ ...user, email: e.target.value })
-          // }}
+          value={email}
+          onChange={(e) => {
+              setEmail(e.target.value )
+          }}
         />
 
         <label htmlFor="password" className="auth-form-heading">
@@ -30,22 +58,22 @@ function Login() {
           id="password"
           placeholder="password"
           className="user-input"
-          // value={user.password}
-          // onChange={(e) => {
-          //     setUser({ ...user, password: e.target.value })
-          // }}
+          value={password}
+          onChange={(e) => {
+              setPassword(e.target.value)
+          }}
         />
 
         <button
           type="button"
           className="auth-btn"
-          //
+          onClick={login}
         >
           Login
         </button>
 
         <Link to="/login" >
-          <p>Don't have an account?Signup</p>
+          <p>Don't have an account? Signup</p>
         </Link>
       </form>
 
