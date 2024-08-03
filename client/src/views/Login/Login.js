@@ -10,12 +10,15 @@ function Login() {
 
   const login = async()=>{
 
-    const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`)
+    const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`,{
+      email,
+      password
+    })
     
     if(response.data.success){
       toast.success(response.data.message)
 
-      localStorage.getItem('currentUser',JSON.stringify(response.data.data))
+      localStorage.setItem('currentUser',JSON.stringify(response.data.data))
 
       toast.loading("Redirecting to home page")
 

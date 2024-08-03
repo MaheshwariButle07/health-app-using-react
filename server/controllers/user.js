@@ -38,11 +38,11 @@ const postSignUp = async (req, res) => {
 
   const login = async(req,res)=>{
 
-    const { Email , Password } = req.body
+    const { email , password } = req.body
 
     const user = await User.findOne({
-      Email:Email,
-      Password:Password
+      email:email,
+      password:password
     })
 
 
