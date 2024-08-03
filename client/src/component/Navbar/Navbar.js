@@ -2,6 +2,7 @@ import React, {useState , useEffect} from "react";
 import "./Navbar.css";
 import defaltProfileImage from "./profile.png"
 import { Link } from 'react-router-dom'
+import toast from "react-hot-toast";
 
 
 
@@ -26,10 +27,6 @@ function Navbar() {
 
     if (currentUser) {
       setUser(currentUser);
-    }
-
-    if (!currentUser) {
-      window.location.href = "/login";
     }
 
     console.log(currentUser);
