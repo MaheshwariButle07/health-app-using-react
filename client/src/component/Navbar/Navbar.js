@@ -50,7 +50,7 @@ function Navbar() {
             <li>Home</li>
           </Link>
 
-          <Link to="/">
+          <Link to="/bmi-calculator">
             <li>BMI Calculator</li>
           </Link>
 
@@ -59,11 +59,16 @@ function Navbar() {
           </Link>
 
           <li>
-            {User ? (
+            {User ? 
+            (
               <li onClick={Logout} className="L-btn">
                 Logout
               </li>
-            ) : (
+            ) 
+
+            
+            :
+            (
               <li onClick={Login} className="L-btn">
                 Login
               </li>
